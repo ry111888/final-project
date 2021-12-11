@@ -1,0 +1,50 @@
+1.How will your organize your code?
+  I will define two classes. One is class task, another is class tasks. 
+  The attributes of the task such as name, id, due date are defined in class
+  task. In class tasks I define a task list containing all the tasks and I 
+  write 6 class methods to realize the function of adding tasks, listing tasks,
+  querying terms, reporting tasks, deleting tasks and completing tasks. There
+  is a main function in the program which will analyze the arguments in the 
+  command line and call different functions according to the arguments.
+  
+2.How structure your application flow?
+  In the main function, I will first creat a tasks object. The program will read
+  data from pickle file and assign all the task objects to the task list of task object. 
+  Then the main function receive and analyze the arguments in the command line and
+  it will call one of the 6 class method to fulfill user's requirement. If it 
+  call the add method, it will create a new task object and add it to the task 
+  list in the class tasks. Every time it call the list or report method, the
+  program will print information of tasks according to the task list. When it 
+  call the delete or done method, the program will get the argument of task's
+  id from command line and handle the corresponding task. When we want to query 
+  items in all tasks, the program will get the argument of items and print the 
+  information of tasks containing one of the items. Once the program execute a
+  command, it will make some change to the task list and I pound it to the pickle
+  file.
+
+3.How will you sort data? At what stage?
+  In the method list, I sort the task according to the due date and priority.
+  First I put all the task in list self.tasks into 2 new lists. One is a list 
+  containing tasks with due another is a list containing task with no due.
+  For tasks with due, I use time.strptime() to change due time to a standard 
+  format which can be compared with. Then I use function sorted to sort the list
+  and let the key equal to due time. So I can sort the tasks according to their
+  due date. For tasks with no due. I also use function sorted to sort the list
+  but the key should be the priority of the tasks. Then I can sort the task according
+  to the priority.
+
+4.What search approach will you use?
+  In query method I put all the search items into a list. For every item of the
+  list, the program will traverse the task list to see whether the name of a task
+  contains the item. The search item and name of the task are strings. So I use 
+  operator 'in' to determine whether a string contains another string. 
+  
+5.How will you represent date stamps?
+  I will import the time package and datetime package. I use time.localtime()
+  to get the time now and use time.strftime() to chage it to the format needed.
+  In list, report, query method I need to calculate the age of some tasks. So
+  first I use datetime.strptime() to change the created time whose format is 
+  defined before by myself to system standard formate. Then I use datetime.strftime()
+  to get the year, month, day of the creating time. By using datetime.datetime()
+  I can Use the time now minus the time of creating task to calculate the age of 
+  the task.
